@@ -1,13 +1,15 @@
-﻿using Entities.Abstract;
-using Entities.Concrete;
+﻿
+
+using Core.Entities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
-    public interface IEntityRepository<T> where T : class,IEntity,new()
+    public interface IEntityRepository<T> where T : class,IEntity,new() // T her şey olamaz referans tip ve newlenebilir
     {
         List<T> GetAll(Expression<Func<T,bool>> filter=null);
         T Get(Expression<Func<T, bool>> filter);
