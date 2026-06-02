@@ -11,12 +11,13 @@ namespace Core.CrossCuttingConcerns.Validation
     {
         public static void Validate(IValidator validator,object entity)
         {
-            var context = new ValidationContext<object>(entity);
-           
-            var result = validator.Validate(context);
-            if (!result.IsValid)
+            var context = new ValidationContext<object>(entity); // Doğrulama işlemi için bir ValidationContext oluşturuyoruz ve doğrulanacak nesneyi içine koyuyoruz 
+
+            var result = validator.Validate(context); // Validator'ı kullanarak doğrulama işlemini gerçekleştiriyoruz ve sonucu result değişkenine atıyoruz
+            if (!result.IsValid) // Eğer doğrulama sonucu geçerli değilse, yani doğrulama hataları varsa
             {
-                throw new ValidationException(result.Errors);
+                throw new ValidationException(result.Errors); // Doğrulama hatalarını içeren bir ValidationException fırlatıyoruz. Bu exception, doğrulama hatalarını
+                                                              // içeren bir liste içerir ve bu hataları yakalayarak kullanıcıya göstermek için kullanılabilir.
             }
         }
     }

@@ -7,11 +7,11 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()); // Autofac'ı kullanarak bağımlılıkları yönetmek istediğimizi belirtir
 
-builder.Host.ConfigureContainer<ContainerBuilder>(options =>
+builder.Host.ConfigureContainer<ContainerBuilder>(options => // Autofac'ın modül yapısını kullanarak bağımlılıkları kaydettiğimiz yer
 {
-    options.RegisterModule(new AutofacBusinessModule());
+    options.RegisterModule(new AutofacBusinessModule()); // AutofacBusinessModule'de tanımladığımız bağımlılıkları kaydeder
 });
 // Add services to the container.
 // autofac,ninject,castlewindsor,structuremap,lightinject,dryinject --> ioc container
