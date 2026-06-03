@@ -17,11 +17,14 @@ namespace Business.DependencyResolvers.Autofac
         protected override void Load(ContainerBuilder builder) // Autofac'ın modül yapısını kullanarak bağımlılıkları kaydettiğimiz yer
         {
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance(); // Birisi senden IProductService isterse ona ProductManager ver demek
-            builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance(); // Birisi senden IProductDal isterse ona EfProductDal ver demek
-          
+            builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+           
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly(); // Şu an çalışan assembly'i alır
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces() // Şu an çalışan assembly'deki tüm tipleri alır ve onların uyguladığı arayüzlere göre kaydeder
-             
+
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions() // AspectInterceptorSelector'ı kullanarak hangi interceptor'ların uygulanacağını belirler
                 {
                     Selector = new AspectInterceptorSelector()// AspectInterceptorSelector'ı kullanarak hangi interceptor'ların uygulanacağını belirler

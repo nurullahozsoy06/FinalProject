@@ -11,7 +11,7 @@ namespace Core.Utilities.Interceptors
     //Bu sınıf, tüm aspect'lerin ortaklaşa kullanacağı evrensel bir şablon (çerçeve) sunar.
     //Diğer aspect'ler sadece kendi ilgilendikleri evreyi (örneğin sadece OnBefore'u) ezerek tertemiz bir şekilde yazılırlar.
     public abstract class MethodInterception : MethodInterceptionBaseAttribute
-    {
+    { //invocation =business kodlarının çalıştığı methodu temsil eder. Yani, aspect'in uygulanacağı methodun bilgilerini ve o methodun çalışmasını kontrol etmek için kullanılan bir nesnedir.
         protected virtual void OnBefore(IInvocation invocation) { } //Bu method, aspect'in uygulanacağı methodun çalışmasından önce çalışacak kodları yazmak için kullanılır. Örneğin, bir log aspect'i için burada loglama kodları yazılabilir.
         protected virtual void OnAfter(IInvocation invocation) { } //Bu method, aspect'in uygulanacağı methodun çalışmasından sonra çalışacak kodları yazmak için kullanılır. Örneğin, bir log aspect'i için burada loglama kodları yazılabilir.
         protected virtual void OnException(IInvocation invocation, System.Exception e) { } //Bu method, aspect'in uygulanacağı methodun çalışması sırasında bir hata oluşursa çalışacak kodları yazmak için kullanılır. Örneğin, bir log aspect'i için burada loglama kodları yazılabilir.
