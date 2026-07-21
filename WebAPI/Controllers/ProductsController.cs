@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController] //atribute
+    [Route("api/[controller]")]//url rotası // api/products
+    [ApiController] //attribute
     public class ProductsController : ControllerBase
     {
         IProductService _productService;

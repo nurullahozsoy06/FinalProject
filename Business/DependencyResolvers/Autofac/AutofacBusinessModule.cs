@@ -28,6 +28,10 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+
+
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly(); // Şu an çalışan assembly'i alır
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces() // Şu an çalışan assembly'deki tüm tipleri alır ve onların uyguladığı arayüzlere göre kaydeder
 

@@ -11,6 +11,7 @@ using System.Text;
 
 namespace Core.Utilities.Security.JWT
 {
+    //Bu yapı, JWT Authentication sisteminin kalbidir.
     public class JwtHelper : ITokenHelper
     {
         public IConfiguration Configuration { get; }
